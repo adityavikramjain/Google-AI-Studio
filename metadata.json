@@ -1,0 +1,5 @@
+{
+  "name": "Glass Box: Auto-Regressive Playground",
+  "description": "An educational dashboard demonstrating how LLMs generate text token-by-token with real-time probability visualization using the Gemini API.",
+  "requestFramePermissions": []
+}

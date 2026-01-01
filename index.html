@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini Glass Box</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'canvas': '#FAFAFA',
+              'canvas-dark': '#1E1E1E',
+              'ink': {
+                primary: '#0F0F1A',
+                secondary: '#4A4A5A',
+                tertiary: '#6A6A7A',
+                inverse: '#FFFFFF',
+              },
+              'accent': '#FF4500', // The Hero Color
+            },
+            fontFamily: {
+              'display': ['"Playfair Display"', 'serif'],
+              'body': ['Inter', 'sans-serif'], // Fallback for Satoshi
+              'mono': ['"JetBrains Mono"', 'monospace'],
+              'numeric': ['"Space Grotesk"', 'sans-serif'],
+            },
+            borderRadius: { 'tile': '16px', 'badge': '8px' },
+            boxShadow: {
+              'glass': '0 4px 12px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.08)',
+              'accent-glow': '0 0 6px rgba(255,69,0,0.35), 0 0 12px rgba(255,69,0,0.15)',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+      body {
+        background-color: #FAFAFA;
+        font-family: 'Inter', sans-serif;
+        color: #0F0F1A;
+        overflow-x: hidden;
+      }
+      
+      .glow-bullet { position: relative; padding-left: 28px; }
+      .glow-bullet::before {
+        content: ''; position: absolute; left: 0; top: 0.55em; width: 0.45em; height: 0.45em;
+        background: #FF4500; border-radius: 50%;
+        box-shadow: 0 0 6px rgba(255,69,0,0.35), 0 0 12px rgba(255,69,0,0.15);
+      }
+      .zoom-card {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+      /* Animation for the Token flying back to input */
+      @keyframes flyBack {
+        0% { transform: scale(1); opacity: 1; }
+        100% { transform: translate(-50vw, 0); opacity: 0; }
+      }
+      
+      .animate-fly-back {
+        animation: flyBack 0.8s ease-in-out forwards;
+      }
+
+      /* Scrollbar styling for code blocks */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #E5E7EB;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #D1D5DB;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "chart.js": "https://esm.sh/chart.js@^4.5.1",
+    "react-chartjs-2": "https://esm.sh/react-chartjs-2@^5.3.1"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
